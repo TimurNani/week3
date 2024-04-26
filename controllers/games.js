@@ -37,16 +37,16 @@ const addGameController = async (req, res) => {
         const inArray = req.games.map(item => Number(item.id));
         let maximalId;
         if (inArray.length > 0) {
-          maximalId = Math.max(...inArray);
+            maximalId = Math.max(...inArray);
         } else {
-          maximalId = 0;
+            maximalId = 0;
         }
         req.updatedObject = {
-          id: maximalId + 1,
-          title: req.body.title,
-          image: req.body.image,
-          link: req.body.link,
-          description: req.body.description
+            id: maximalId + 1,
+            title: req.body.title,
+            image: req.body.image,
+            link: req.body.link,
+            description: req.body.description
         };
         // Добавляем данные о новой игре в список с другими играми
         req.games = [...req.games, req.updatedObject];
@@ -62,6 +62,6 @@ const addGameController = async (req, res) => {
         games: req.games, // Обновлённый список со всеми играми
         updated: req.updatedObject // Новая добавленная игра
     });
-} 
+}
 
 module.exports = { sendAllGames, deleteGame, addGameController };
